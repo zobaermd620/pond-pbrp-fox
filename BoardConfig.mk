@@ -1,14 +1,11 @@
-# Copyright (C) 2017-2023 The Android Open Source Project
-# Copyright (C) 2014-2023 The Team Win LLC
+# Copyright
 # SPDX-License-Identifier: Apache-2.0
 
 # Device Path
-DEVICE_PATH := device/xiaomi/pond
+DEVICE_PATH := device/xiaomi/lake
 
-# Minimal manifest support
+# Build flags
 ALLOW_MISSING_DEPENDENCIES := true
-
-# Build hack
 BUILD_BROKEN_DUP_RULES := true
 
 # Architecture
@@ -28,12 +25,10 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 # Device assert
 TARGET_OTA_ASSERT_DEVICE := lake,lake_p,pond,pond_p
 
-# Bootloader
+# Bootloader / Platform
 TARGET_BOOTLOADER_BOARD_NAME := lake
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
-
-# Platform
 TARGET_BOARD_PLATFORM := mt6768
 
 # Kernel
@@ -44,7 +39,7 @@ TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_RAMDISK_USE_LZ4 := true
 
-# Kernel boot image arguments
+# Kernel boot image args
 BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_PAGE_SIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 4
@@ -98,20 +93,19 @@ BOARD_AVB_ENABLE := true
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_pond
-TARGET_RECOVERY_DEVICE_MODULES := libinit_pond
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_lake
+TARGET_RECOVERY_DEVICE_MODULES := libinit_lake
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
-# Recovery image
+# Recovery image build
 TARGET_NO_RECOVERY := true
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE :=
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT :=
 BOARD_VENDOR_RAMDISK_RECOVERY := true
 
 # Encryption
@@ -139,7 +133,7 @@ TW_MAX_BRIGHTNESS := 255
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_NO_SCREEN_BLANK := true
 
-# File system tools
+# Filesystem support
 TW_INCLUDE_NTFS_3G := true
 TW_INCLUDE_FUSE_EXFAT := true
 TW_INCLUDE_FUSE_NTFS := true
@@ -150,7 +144,7 @@ TW_HAS_MTP := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
 
-# TWRP behavior
+# TWRP Behavior
 RECOVERY_SDCARD_ON_DATA := true
 TW_EXCLUDE_TWRPAPP := true
 TW_EXCLUDE_APEX := true
@@ -174,17 +168,14 @@ TW_LOAD_VENDOR_BOOT_MODULES := true
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 TW_LOAD_VENDOR_MODULES := "mt6358-accdet.ko xiaomi_touch.ko lct_tp.ko nt36528_spi.ko ft8057m_spi.ko ft8057p_spi.ko icnl9916_spi.ko"
 
-# OrangeFox specific
-OF_MAINTAINER := your_nickname_here
-FOX_TARGET_DEVICES := lake,pond
-OF_USE_GREEN_LED := true
-OF_SCREEN_H := 2340
-OF_STATUS_H := 100
-OF_ALLOW_DISABLE_NAVBAR := true
-OF_NO_TREBLE_COMPATIBILITY_CHECK := true
-OF_DONT_PATCH_ENCRYPTED_DEVICE := true
-OF_SKIP_MULTIUSER_FOLDERS_BACKUP := true
-OF_DISABLE_MIUI_OTA_BY_DEFAULT := true
-OF_CHECK_OVERWRITE_ATTEMPTS := true
-OF_USE_LZMA_COMPRESSION := true
-OF_CLASSIC_LEDS_FUNCTION := true
+# PBRP Specific
+PBRP_DEVICE := true
+PBRP_OTA_PARTITIONS := system vendor product
+PBRP_FORCE_PB_RECOVERY := true
+PBRP_USE_LOGD := true
+PBRP_INCLUDE_LPTOOLS := true
+PBRP_SUPPORT_DEFAULT_THEME := true
+PBRP_MAINTAINER := your_nickname_here
+
+# Optional: Customize PBRP LED or branding
+PBRP_NO_DEFAULT_THEME := false
