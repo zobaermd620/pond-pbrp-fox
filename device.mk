@@ -104,9 +104,9 @@ PRODUCT_PACKAGES += \
     init.recovery.mt6768.rc.recovery
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/fox/init.recovery.mt6768.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6768.rc \
-    $(LOCAL_PATH)/recovery/fox/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc \
-    $(LOCAL_PATH)/recovery/fox/init.recovery.mt6768.rc.recovery:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6768.rc.recovery
+    $(LOCAL_PATH)/recovery/pbrp/init.recovery.mt6768.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6768.rc \
+    $(LOCAL_PATH)/recovery/pbrp/init.recovery.usb.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.usb.rc \
+    $(LOCAL_PATH)/recovery/pbrp/init.recovery.mt6768.rc.recovery:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6768.rc.recovery
 
 # PBRP Specific Flags
 PBRP_SUPPORT_DEFAULT_THEME := true
@@ -114,7 +114,7 @@ PBRP_USE_LOGD := true
 PBRP_DEVICE := true
 PBRP_INCLUDE_LPTOOLS := true
 PBRP_FORCE_PB_RECOVERY := true
-PBRP_MAINTAINER := your_nickname_here
+PBRP_MAINTAINER := 
 TW_DEFAULT_LANGUAGE := en
 TW_INCLUDE_FASTBOOTD := true
 
