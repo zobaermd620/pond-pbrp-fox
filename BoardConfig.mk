@@ -175,7 +175,7 @@ PBRP_FORCE_PB_RECOVERY := true
 PBRP_USE_LOGD := true
 PBRP_INCLUDE_LPTOOLS := true
 PBRP_SUPPORT_DEFAULT_THEME := true
-PBRP_MAINTAINER := your_nickname_here
+PBRP_MAINTAINER := 
 
 # Optional: Customize PBRP LED or branding
 PBRP_NO_DEFAULT_THEME := false
